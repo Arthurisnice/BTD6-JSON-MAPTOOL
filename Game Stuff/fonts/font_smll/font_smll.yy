@@ -119,8 +119,8 @@
   "maintainGms1Font":false,
   "name":"font_smll",
   "parent":{
-    "name":"BTD6 100 Lane Setting Tool",
-    "path":"BTD6 100 Lane Setting Tool.yyp",
+    "name":"Fonts",
+    "path":"folders/Fonts.yy",
   },
   "pointRounding":0,
   "ranges":[

@@ -1,16 +1,16 @@
 {
   "$GMObject":"",
-  "%Name":"ADD_Path",
+  "%Name":"add_path",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"ADD_Path",
+  "name":"add_path",
   "overriddenProperties":[],
   "parent":{
-    "name":"BTD6 100 Lane Setting Tool",
-    "path":"BTD6 100 Lane Setting Tool.yyp",
+    "name":"Objetcts",
+    "path":"folders/Objetcts.yy",
   },
   "parentObjectId":null,
   "persistent":false,
@@ -31,8 +31,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"s_add_rmv_bttms",
-    "path":"sprites/s_add_rmv_bttms/s_add_rmv_bttms.yy",
+    "name":"S_add_bttm",
+    "path":"sprites/S_add_bttm/S_add_bttm.yy",
   },
   "spriteMaskId":null,
   "visible":true,

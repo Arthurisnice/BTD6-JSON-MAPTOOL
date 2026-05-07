@@ -6,3 +6,4 @@ image_speed=0
 image_index=1
 continue_load=false
 msg_id = -1
+file_path=""

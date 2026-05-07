@@ -9,8 +9,8 @@
   "name":"o_mouse",
   "overriddenProperties":[],
   "parent":{
-    "name":"BTD6 100 Lane Setting Tool",
-    "path":"BTD6 100 Lane Setting Tool.yyp",
+    "name":"Objetcts",
+    "path":"folders/Objetcts.yy",
   },
   "parentObjectId":null,
   "persistent":false,

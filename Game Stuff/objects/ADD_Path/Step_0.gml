@@ -1,7 +1,11 @@
+
+image_xscale=1
+image_yscale=1
+
 if place_meeting(x,y,o_mouse) && mouse_check_button_pressed(mb_left) 
 {
-	if path_controller.path_amt<8 {path_controller.path_amt++}
+	save_change()
+	image_xscale=0.9
+	image_yscale=0.9
+	path_controller.path_arr[path_controller.selected] = [true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true]
 }
-
-if path_controller.path_amt==8 {image_alpha=0.5}
-else {image_alpha=1}
