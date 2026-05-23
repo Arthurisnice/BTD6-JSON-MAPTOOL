@@ -1,4 +1,4 @@
-path_amt=1
+path_amt=0
 window_set_cursor(cr_none)
 path_arr=[
 [true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true],
@@ -14,6 +14,8 @@ path_arr=[
 path_size = [1,1,1,1,1,1,1,1]
 
 selected=0
+
+lane_amount=100
 
 saved_array_1=[]
 saved_array_2=[]

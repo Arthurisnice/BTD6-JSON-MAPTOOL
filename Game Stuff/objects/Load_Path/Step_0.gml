@@ -4,14 +4,23 @@ if load_paths==true
 {
 	image_xscale=0.9
 	image_yscale=0.9
-	file_path = get_open_filename(".json","")
 	
-	msg_id = file_text_open_read(file_path)
+	var temp_file_path=""
 	
-	if is_valid_json(file_path)
+	if skip_path_get==false
 	{
-		if file_exists(file_path)
+		temp_file_path = get_open_filename(".json","")
+	}
+	if skip_path_get==true {skip_path_get=false; temp_file_path=file_path}
+	
+	msg_id = file_text_open_read(temp_file_path)
+	
+	if is_valid_json(temp_file_path)
+	{
+		if file_exists(temp_file_path)
 		{
+			file_path=temp_file_path
+			
 			var _loaded_file = file_text_open_read(file_path);
 			var _temp_vbuff_list = "";
 			while (!file_text_eof(_loaded_file))
@@ -25,6 +34,11 @@ if load_paths==true
 			
 			show_debug_message("Json Loaded Sucessfully")
 			
+			if text.mapEditorData.mapEditorModel.customMapModel.MapEditorSettingsData.totalPathPatternSequences==4000
+			{
+				repeat_l_round.image_index=1
+			}
+			
 			msg_id=text.mapEditorData
 		}
 		
@@ -33,38 +47,31 @@ if load_paths==true
 		show_debug_message(msg_id.mapEditorModel.customMapModel.PathData)
 		show_debug_message("\narray of size:" +string(path_data_leng))
 	
-		if msg_id.mapEditorModel.customMapModel.MapEditorSettingsData.totalPathPatternSequences!=100
-		{
-			for (var i=0;i<path_data_leng;i++)
-			{
-				msg_id.mapEditorModel.customMapModel.PathData[i].pathEnabledSequence = [true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true]
-			}
+		var lane_size = array_length(msg_id.mapEditorModel.customMapModel.PathData[0].pathEnabledSequence)
 		
-			show_debug_message("100 rounds created in save file/n")
+		path_controller.lane_amount=lane_size
 		
-			show_debug_message(msg_id.mapEditorModel.customMapModel.MapEditorSettingsData.totalPathPatternSequences)
-			msg_id.mapEditorModel.customMapModel.MapEditorSettingsData.totalPathPatternSequences=100
-			
-			path_controller.path_amt=path_data_leng
-		}
-		else
-		{
-			show_debug_message("100 rounds detected, loading paths...")
-		
-			for (var j=0;j<path_data_leng;j++)
-			{
-				show_debug_message(msg_id.mapEditorModel.customMapModel.PathData[j].pathEnabledSequence)
-				show_debug_message("\n")
-				path_controller.path_arr[j]=msg_id.mapEditorModel.customMapModel.PathData[j].pathEnabledSequence
-				path_controller.path_size[j]=msg_id.mapEditorModel.customMapModel.PathData[j].pathWidth
-			}
-		
-			path_controller.path_amt=path_data_leng
-		}
 	
-		if instance_exists(Load_result) {instance_destroy(Load_result)}
-		var result = instance_create_depth(room_width / 2, room_height / 2, depth - 1, Load_result);
-	    result.image_index = 0;
+		for (var i=0;i<path_data_leng;i++)
+		{
+			for (var i2=0; i2<lane_size;i2++)
+			{
+				path_controller.path_arr[i][i2] = msg_id.mapEditorModel.customMapModel.PathData[i].pathEnabledSequence[i2]
+			}
+		}
+		show_debug_message(msg_id.mapEditorModel.customMapModel.MapEditorSettingsData.totalPathPatternSequences)
+		msg_id.mapEditorModel.customMapModel.MapEditorSettingsData.totalPathPatternSequences=lane_size
+			
+		path_controller.path_amt=path_data_leng
+	
+		if skip_mssg==false
+		{
+			if instance_exists(Load_result) {instance_destroy(Load_result)}
+			var result = instance_create_depth(room_width / 2, room_height / 2, depth - 1, Load_result);
+		    result.image_index = 0;
+		}
+		else if skip_mssg==true {skip_mssg=false}
+		
 	}
 
 	load_paths=false

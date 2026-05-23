@@ -11,8 +11,7 @@ var lane_size = 14
 
 for (var p=0; p<path_amt; p++)
 {
-
-	for (var i=0;i<100;i++)
+	for (var i=0;i<lane_amount;i++)
 	{
 		var desplacment = hor_pos+(12*i)
 		var height_dps = pos_hight+vertical_dsp*p
@@ -76,7 +75,8 @@ for (var b=0;b<path_amt+1;b++)
 		draw_line_width_colour(0,txt_y-20,room_width,txt_y-20,6,c_black,c_black)
 		
 		var coll_rect_slc  = collision_rectangle(path_x_pos-8,txt_y-10,path_x_pos+58,txt_y+10,o_mouse,false,true)
-		if coll_rect_slc && mouse_check_button_pressed(mb_left) {selected=b}
+		if coll_rect_slc && mouse_check_button_pressed(mb_left) && selected!=b && o_mouse_type.act_stt==4 {selected=b; save_change()}
+		else if coll_rect_slc && mouse_check_button_pressed(mb_left) && selected!=b {selected=b}
 		else if coll_rect_slc && selected!=b {_color=c_dkgrey}
 		
 		draw_roundrect_colour(path_x_pos-8,txt_y-10,path_x_pos+58,txt_y+10,_color,_color,false)

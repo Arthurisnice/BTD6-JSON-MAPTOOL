@@ -7,3 +7,5 @@ image_index=1
 continue_load=false
 msg_id = -1
 file_path=""
+skip_path_get=false
+skip_mssg=false
